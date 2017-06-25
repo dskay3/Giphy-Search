@@ -46,7 +46,7 @@ $(document.body).on("click", ".btns", function() {
     var apiKey = "83c96803edec4d8ca805dcb6bdb5d6a5";
     var tag = $(this).data("value");
     var limit = 10;
-    var queryURL = "https://api.giphy.com/v1/gifs/search" + "?q=" + tag + "&api_key=" + apiKey + "&limit=" + limit;
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + tag + "&api_key=" + apiKey + "&limit=" + limit;
 
     console.log("QueryURL: " + queryURL);
 
