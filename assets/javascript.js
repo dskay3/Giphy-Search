@@ -20,9 +20,12 @@ var gifArr = [
     "frog"
 ]
 
+// Adds GIF Search buttons
 function addButtons() {
+    // Clears div to prevent repetition of buttons
     $("#gifButtons").empty();
 
+    // Creates the buttons
     for (var i = 0; i < gifArr.length; i++) {
         var btns = $("<button>");
         btns.addClass("btns");
@@ -34,9 +37,12 @@ function addButtons() {
 
 addButtons();
 
+// Executes and uses Giphy API to generate GIFs
 $(document.body).on("click", ".btns", function() {
+    // Clears div to prevent repetition of GIFs
     $("#gifResults").empty();
 
+    // API Key
     var apiKey = "dc6zaTOxFJmzC";
     var tag = $(this).data("value");
     var limit = 10;
@@ -47,7 +53,9 @@ $(document.body).on("click", ".btns", function() {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).done(function(response){
+    })
+    .done(function(response){
+        // Objects Array from Giphy API
         var gifArr = response.data;
 
         var loading = $("<img>");
@@ -83,6 +91,7 @@ $(document.body).on("click", ".btns", function() {
             $(gifImgDiv).css("display", "none");
         }
 
+        // Loads the loading gif to give time for the GIFs to load
         setTimeout(function() {
             $("#loading").css("display", "none");
             $(".imgDiv").css("display", "block");
@@ -91,6 +100,7 @@ $(document.body).on("click", ".btns", function() {
 
 });
 
+// Pauses and unpauses GIFs
 $(document.body).on("click", ".gifImgs",function() {
     var state = $(this).attr("data-state");
 
@@ -103,6 +113,7 @@ $(document.body).on("click", ".gifImgs",function() {
     }
 })
 
+// Adds additional buttons from the search box
 $("#searchGif").on("click", function() {
     event.preventDefault();
     
