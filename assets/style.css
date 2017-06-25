@@ -39,8 +39,8 @@ button:focus {
     margin-right: 2px;
     margin-bottom: 10px;
     border-radius: 30px;
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #gifButtons {
@@ -59,11 +59,15 @@ button:focus {
 
 .imgDiv {
     float: left;
-    margin-top: 10px;
+    margin-top: 30px;
 }
 
 #loading {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
+    margin-top: 60px;
+}
+
+#search-div {
+    margin-bottom: 30px;
 }

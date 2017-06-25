@@ -42,6 +42,8 @@ $(document.body).on("click", ".btns", function() {
     var limit = 10;
     var queryURL = "http://api.giphy.com/v1/gifs/search" + "?q=" + tag + "&api_key=" + apiKey + "&limit=" + limit;
 
+    console.log("QueryURL: " + queryURL);
+
     $.ajax({
         url: queryURL,
         method: "GET"
