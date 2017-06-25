@@ -26,7 +26,7 @@ function addButtons() {
     for (var i = 0; i < gifArr.length; i++) {
         var btns = $("<button>");
         btns.addClass("btns");
-        btns.attr("data-value", gifArr[i].replace(/\s+/g,''));
+        btns.attr("data-value", gifArr[i]);
         btns.text(gifArr[i]);
         $("#gifButtons").append(btns);
     }
@@ -35,6 +35,8 @@ function addButtons() {
 addButtons();
 
 $(document.body).on("click", ".btns", function() {
+    $("#gifResults").empty();
+
     var apiKey = "dc6zaTOxFJmzC";
     var tag = $(this).data("value");
     var limit = 10;
@@ -44,8 +46,14 @@ $(document.body).on("click", ".btns", function() {
         url: queryURL,
         method: "GET"
     }).done(function(response){
-        $("#gifResults").empty();
         var gifArr = response.data;
+
+        var loading = $("<img>");
+        loading.attr("id", "loading");
+        loading.attr("src", "assets/images/loading.jpg");
+        loading.css("display", "block");
+        $("#gifResults").append(loading);
+
         console.log(response)
 
         for (var i = 0; i < gifArr.length; i++) {
@@ -70,8 +78,13 @@ $(document.body).on("click", ".btns", function() {
             $(gifImgDiv).append(img);
 
             $("#gifResults").append(gifImgDiv);
+            $(gifImgDiv).css("display", "none");
         }
 
+        setTimeout(function() {
+            $("#loading").css("display", "none");
+            $(".imgDiv").css("display", "block");
+        }, 3000);
     })
 
 });
